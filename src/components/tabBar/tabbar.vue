@@ -10,12 +10,13 @@
         <tabbar-item link="/member" :selected="$route.name === 'member'">
           <img slot="icon" src="../../assets/img/icon.png">
           <img slot="icon-active" src="../../assets/img/icon1.png">
-          <span slot="label">会员</span>
+          <span slot="label">纪念日</span>
         </tabbar-item>
-        <tabbar-item link="/shopcart" :selected="$route.name === 'shopcart'">
+        <div style="width: 20%;display: inline-block;height: 50px"></div>
+        <tabbar-item link="/shopcart" :selected="$route.name === 'shopcart'" class="item">
           <img slot="icon" src="../../assets/img/icon.png">
           <img slot="icon-active" src="../../assets/img/icon1.png">
-          <span slot="label">购物车</span>
+          <span slot="label"></span>
         </tabbar-item>
         <tabbar-item link="/news" :selected="$route.name === 'news'">
           <img slot="icon" src="../../assets/img/icon.png">
@@ -25,7 +26,7 @@
         <tabbar-item link="/search" :selected="$route.name === 'search'">
           <img slot="icon" src="../../assets/img/icon.png">
           <img slot="icon-active" src="../../assets/img/icon1.png">
-          <span slot="label">查找</span>
+          <span slot="label">我的</span>
         </tabbar-item>
       </tabbar>
     </div>
@@ -48,4 +49,5 @@
 
 <style scoped>
   .tabbar{position: fixed;}
+  .weui-tabbar__item.item{position: absolute;width: 60px;height: 60px;display: inline-block;border-radius: 50%;background: red;margin: auto;left: 0;right: 0;bottom: 15px;}
 </style>

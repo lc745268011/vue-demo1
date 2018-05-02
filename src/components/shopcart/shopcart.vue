@@ -110,7 +110,8 @@
           .catch(function (err) {
             console.log(err);
           })
-          .always(function () { });
+          .always(function () {
+          });
       },
       initSwiper() {
         this.swiper = new Swiper('.swiper-container', {
@@ -186,6 +187,7 @@
       }
     }
   }
+
   .swiper-container {
     background: #000;
     position: fixed;
