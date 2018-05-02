@@ -9,12 +9,7 @@
         <h2 v-text="point.title"></h2>
         <img :src="point.contentImg" alt="" v-if="point.contentImg" width="100%">
         <p v-text="point.text"></p>
-        <a :href="point.linkUrl"
-           class="read-more"
-           target="_blank"
-           v-if="point.linkUrl"
-           v-html="point.linkText!=undefined?point.linkText:'Read more'"
-        ></a>
+        <!--<a :href="point.linkUrl" class="read-more" target="_blank" v-if="point.linkUrl" v-html="point.linkText!=undefined?point.linkText:'Read more'"></a>-->
         <span v-if="point.date" class="date" v-text="point.date"></span>
       </div>
     </div>
@@ -38,7 +33,7 @@
   -------------------------------- */
   .timeline {
     position: relative;
-    padding:0 0 2em 0;
+    padding:0 ;
     margin-top: 2em;
     margin-bottom: 2em;
   }
@@ -146,6 +141,7 @@
     /*box-shadow: 0 3px 0 #d7e4ed;*/
     background: #23ade5;
   }
+  .timeline-block:last-child{margin-top: 0}
   .timeline-content:after {
     content: "";
     display: table;
@@ -162,8 +158,9 @@
     display: inline-block;
   }
   .timeline-content p {
-    margin: 1em 0;
+    margin-top: 0.5em ;
     line-height: 1.6;
+    font-size: 16px;
   }
   .timeline-content .read-more {
     float: right;

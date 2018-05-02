@@ -1,43 +1,106 @@
 <template>
-    <div>
-        我是会员页面
-      <timeLine :points="points"></timeLine>
-    </div>
+  <div>
+    <inline-calendar
+      ref="calendar"
+      @on-change="onChange"
+      @on-view-change="onViewChange"
+      class="inline-calendar-demo"
+      :show.sync="show"
+      v-model="value"
+      :range="range"
+      :show-last-month="showLastMonth"
+      :show-next-month="showNextMonth"
+      :highlight-weekend="highlightWeekend"
+      :return-six-rows="return6Rows"
+      :hide-header="hideHeader"
+      :hide-week-list="hideWeekList"
+      :replace-text-list="replaceTextList"
+      :weeks-list="weeksList"
+      :render-function="buildSlotFn"
+      :disable-past="disablePast"
+      :disable-future="disableFuture"
+      :disable-weekend="disableWeekend"
+      :disable-date-function="disableDateFunction">
+    </inline-calendar>
+  </div>
 </template>
+
+
 <script>
-  import timeLine from '../timeLine.vue'
+  import { InlineCalendar, Group, XSwitch, Radio, XButton, Cell, Divider } from 'vux'
+
   export default {
-  name: 'member',
-  data () {
-    return {
-      points: [{
-        pointColor: 'red', // *关键点颜色 可选red yellow green
-        img: '1', // 图片地址 可留空
-        contentImg:'https://ss0.bdstatic.com/6ONWsjip0QIZ8tyhnq/it/u=3618554304,2887917621&fm=77&w_h=121_75&cs=2820658166,1330608299',
-        title: 'hello world', // *时间点标题
-        text: 'first post', // *时间点内容
-        linkUrl: 'https://www.google.com', // *链接url 留空则不显示按钮
-        linkText: 'Read detail', // 按钮显示内容 默认为Read more
-        date: '2017-1-1' // 时间点
-      }, {
-        pointColor: 'yellow', // *关键点颜色 可选red yellow green
-        img: '1', // 图片地址 可留空
-        title: 'hello world', // *时间点标题
-        text: 'first post' // *时间点内容
-      }, {
-        pointColor: 'green', // *关键点颜色 可选red yellow green
-        title: 'hello world', // *时间点标题
-        img: '1', // 图片地址 可留空
-        text: 'first post', // *时间点内容
-        linkUrl: '#', // *链接url 留空则不显示按钮
-        date: '2017-1-1' // 时间点
+    methods: {
+      onChange (val) {
+        console.log('on-change', val)
+      },
+      onViewChange (val, count) {
+        console.log('on view change', val, count)
       }
-      ]
-    }
-  },
+    },
+    data () {
+      return {
+        show: true,
+        value: '',
+        listValue: '',
+        range: false,
+        showLastMonth: true,
+        showNextMonth: true,
+        highlightWeekend: false,
+        return6Rows: true,
+        hideHeader: false,
+        hideWeekList: false,
+        replaceTextList: {},
+        replace: false,
+        changeWeeksList: false,
+        weeksList: [],
+        useCustomFn: false,
+        buildSlotFn: () => '',
+        disablePast: false,
+        disableFuture: false,
+        disableWeekend: false,
+        disableDateFunction (date) {
+          if (date.formatedDate === '2017-10-16') {
+            return true
+          }
+        },
+
+      }
+    },
+    watch: {
+      replace (val) {
+        this.replaceTextList = val ? {
+          'TODAY': '今'
+        } : {}
+      },
+      useCustomFn (val) {
+        this.buildSlotFn = val ? (line, index, data) => {
+          return /8/.test(data.date) ? '<div style="font-size:12px;text-align:center;"><span style="display:inline-block;width:5px;height:5px;background-color:red;border-radius:50%;"></span></div>' : '<div style="height:19px;"></div>'
+        } : () => ''
+      },
+      changeWeeksList (val) {
+        this.weeksList = val ? ['日', '一', '二', '三', '四', '五', '六 '] : ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+      }
+    },
     components: {
-      timeLine
+      InlineCalendar,
+      Group,
+      XSwitch,
+      Radio,
+      XButton,
+      Cell,
+      Divider
     }
-}
+  }
 </script>
-<style></style>
+
+<style lang="less">
+  .inline-calendar-demo {
+    background: rgba(255,255,255,0.9);
+    padding:0 20px;
+    box-sizing: border-box;
+  }
+  .calendar-title{font-size: 20px;}
+  .inline-calendar-demo table th{font-size: 20px;}
+  .inline-calendar-demo table td,.inline-calendar-demo table th{padding: 10px 0}
+</style>

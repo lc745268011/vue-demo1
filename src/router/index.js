@@ -5,6 +5,7 @@ import Router from 'vue-router'
 const home = r => require.ensure([], () => r(require('../components/home/home')))
 const member = r => require.ensure([], () => r(require('../components/member/member')))
 const news = r => require.ensure([], () => r(require('../components/news/newsList')))
+const chooseType = r => require.ensure([], () => r(require('../components/shopcart/chooseType')))
 const shopcart = r => require.ensure([], () => r(require('../components/shopcart/shopcart')))
 const search = r => require.ensure([], () => r(require('../components/search/search')))
 const newsDetail = r => require.ensure([], () => r(require('../components/news/newsDetail')))
@@ -37,6 +38,11 @@ export default new Router({
           name:'shopcart',
           path: '/shopcart',
           component: shopcart
+        },
+        {
+          name:'chooseType',
+          path: '/chooseType',
+          component: chooseType
         },
         {
           name:'search',

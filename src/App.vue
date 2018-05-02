@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <transition name="router-fade" mode="out-in">
       <router-view/>
     </transition>
@@ -38,4 +38,5 @@
   .router-fade-enter, .router-fade-leave-active {
     opacity: 0;
   }
+  .content{padding: 20px 0;}
 </style>

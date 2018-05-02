@@ -11,9 +11,9 @@ window.Swiper = Swiper
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  // el: '#app',
   router,
   store,
-  components: { App },
-  template: '<App/>'
-})
+  // components: { App },
+  // template: '<App/>'
+}).$mount('#app')
