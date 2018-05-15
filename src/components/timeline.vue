@@ -1,6 +1,6 @@
 <template>
   <section class="timeline-container timeline">
-    <div @click="changeCurrentTimePoint(point)" v-for="point in points" class="timeline-block">
+    <div v-for="point in points" class="timeline-block">
       <div class="timeline-img" :class="['timeline-img',point.pointColor===undefined?'red':point.pointColor]">
         <img v-if="point.img" :src="getImg(point.img)" alt="">
       </div>
@@ -15,7 +15,7 @@
     </div>
   </section>
 </template>
-<style scoped>
+<style scoped lang="scss">
   .timeline-container {
     /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
     width: 90%;
@@ -106,7 +106,7 @@
     background: #75ce66;
   }
   .timeline-img.red {
-    background: #c03b44;
+    background: #d88cfd;
   }
   .timeline-img.yellow {
     background: #f0ca45;
@@ -139,8 +139,9 @@
     padding: 1em;
     color: #ffffff;
     /*box-shadow: 0 3px 0 #d7e4ed;*/
-    background: #23ade5;
+    background: $tonal;
   }
+  .timeline-content img{margin-top: 0.2rem}
   .timeline-block:last-child{margin-top: 0}
   .timeline-content:after {
     content: "";
@@ -152,7 +153,7 @@
   }
   .timeline-content p, .timeline-content .read-more, .timeline-content .date {
     font-size: 13px;
-    font-size: 0.8125rem;
+    font-size: 0.24rem;
   }
   .timeline-content .read-more, .timeline-content .date {
     display: inline-block;
@@ -269,7 +270,7 @@
   export default{
     props: {
       points: {
-        required: true
+        required: true,
       }
     },
     data () {
@@ -281,17 +282,15 @@
     methods: {
       getImg: function (imgurl) {
         var ImgObj = new Image() // 判断图片是否存在
-        ImgObj.src = imgurl
-        // 没有图片，则返回-1
+        ImgObj.src = imgurl;
+          // 没有图片，则返回-1
+          console.log(ImgObj)
         if (ImgObj.fileSize > 0 || (ImgObj.width > 0 && ImgObj.height > 0)) {
-          return imgurl
+            return imgurl
         } else {
-          return this.defaultImg
+              return this.defaultImg
         }
       },
-      changeCurrentTimePoint: function (point) {
-        this.$on('currentPoint', point)
-      }
     }
   }
 </script>

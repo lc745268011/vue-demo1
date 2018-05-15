@@ -27,11 +27,7 @@
   }
 </script>
 
-<style>
-  @import './assets/css/common.css';
-  @import '../node_modules/swiper/dist/css/swiper.css';
-  @import '../node_modules/weui/dist/style/weui.css';
-  @import '../node_modules/flex.css';
+<style lang="scss">
   .router-fade-enter-active, .router-fade-leave-active {
     transition: opacity .3s;
   }

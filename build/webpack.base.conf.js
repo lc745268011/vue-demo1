@@ -53,9 +53,13 @@ const webpackConfig = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader',
-        include: [resolve('src')]
+          test: /\.scss$/,
+          loaders: ['style', 'css', 'sass']
+      },
+      {
+          test:/\.css$/,
+          loader:'style-loader!css-loader!stylus-loader',
+          include: []
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

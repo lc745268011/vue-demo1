@@ -7,7 +7,8 @@ const member = r => require.ensure([], () => r(require('../components/member/mem
 const news = r => require.ensure([], () => r(require('../components/news/newsList')))
 const chooseType = r => require.ensure([], () => r(require('../components/shopcart/chooseType')))
 const shopcart = r => require.ensure([], () => r(require('../components/shopcart/shopcart')))
-const search = r => require.ensure([], () => r(require('../components/search/search')))
+const mine = r => require.ensure([], () => r(require('../components/mine/mine')))
+const audit = r => require.ensure([], () => r(require('../components/mine/audit')))
 const newsDetail = r => require.ensure([], () => r(require('../components/news/newsDetail')))
 
 Vue.use(Router)
@@ -45,9 +46,14 @@ export default new Router({
           component: chooseType
         },
         {
-          name:'search',
-          path: '/search',
-          component: search
+          name:'mine',
+          path: '/mine',
+          component: mine
+        },
+        {
+            name:'audit',
+            path: '/audit',
+            component: audit
         },
         {
           name:'newsDetail',
