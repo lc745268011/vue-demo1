@@ -94,13 +94,12 @@
   }
   .timeline-img img {
     display: block;
-    width: 24px;
-    height: 24px;
-    position: relative;
-    left: 50%;
-    top: 50%;
-    margin-left: -12px;
-    margin-top: -12px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: auto;
   }
   .timeline-img.green {
     background: #75ce66;
