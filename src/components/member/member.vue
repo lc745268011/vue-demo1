@@ -32,10 +32,10 @@
   export default {
     methods: {
       onChange (val) {
-        console.log('on-change', val)
+        // console.log('on-change', val)
       },
       onViewChange (val, count) {
-        console.log('on view change', val, count)
+        // console.log('on view change', val, count)
       }
     },
     data () {
