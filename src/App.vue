@@ -1,64 +1,58 @@
 <template>
   <div>
-    <transition :name="transitionName">
-      <router-view class="child-view"></router-view>
-    </transition>
+    <!--<transition name="router-fade" mode="out-in">-->
+     <div id="body" :style="height">
+       <router-view/>
+     </div>
+    <!--</transition>-->
     <ctab-bar></ctab-bar>
     <loading v-model="isLoading"></loading>
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-  import { Loading } from 'vux'
-  import ctabBar from './components/tabBar/tabbar'
-  export default {
-  name: 'App',
-  data () {
-      return {
-          transitionName: 'slide-left'
-      }
-  },
-  components:{
-    ctabBar,
-    Loading
-  },
-  computed: {
-    ...mapState({
-      isLoading: state => state.vux.isLoading,
-    })
-  },
-  beforeRouteUpdate (to, from, next) {
-      let isBack = this.$router.isBack
-      if (isBack) {
-          this.transitionName = 'slide-right'
-      } else {
-          this.transitionName = 'slide-left'
-      }
-      this.$router.isBack = false
-      next()
-  }
-  }
+    import { mapState } from 'vuex'
+    import { Loading } from 'vux'
+    import ctabBar from './components/tabBar/tabbar'
+    export default {
+        name: 'App',
+        data(){
+            return{
+                height:{
+                   overflow:'',
+                    height:'',
+                }
+            }
+        },
+        components:{
+            ctabBar,
+            Loading
+        },
+        computed: {
+            ...mapState({
+                isLoading: state => state.vux.isLoading,
+            })
+        },
+        created(){
+            this.hh()
+        },
+        methods:{
+            hh(){
+                this.height.height=window.innerHeight-53+'px';
+                this.height.overflow='scroll';
+            }
+        }
+
+
+    }
 </script>
 
 <style lang="scss">
-  .child-view {
-    position: absolute;
-    width:100%;
+/*  .router-fade-enter-active, .router-fade-leave-active {
+    transition: opacity .3s;
   }
-  .slide-left-enter, .slide-right-leave-active {
+  .router-fade-enter, .router-fade-leave-active {
     opacity: 0;
-    -webkit-transform: translate(50px, 0);
-    transform: translate(50px, 0);
-    transition: all 0.2s linear;
-
-  }
-  .slide-left-leave-active, .slide-right-enter {
-    opacity: 0;
-    -webkit-transform: translate(-50px, 0);
-    transform: translate(-50px, 0);
-    transition: all 0.2s linear;
-
-  }
+  }*/
   .content{padding: 20px 0;}
 </style>

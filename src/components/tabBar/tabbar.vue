@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div style="height:1rem"></div>
+      <!--<div style="height:1rem"></div>-->
       <tabbar class="tabbar" @on-index-change="onIndexChange">
         <tabbar-item link="/home" :selected="$route.name === 'home'">
           <img slot="icon" src="../../assets/img/home.png">
@@ -48,7 +48,7 @@
 </script>
 
 <style>
-  .weui-tabbar.tabbar{position: fixed;}
+  /*.weui-tabbar.tabbar{position: fixed;}*/
   .weui-tabbar__item.item{position: absolute;width: 50px;height: 50px;display: inline-block;border-radius: 50%;background: #fff;margin: auto;left: 0;right: 0;bottom: 15px;padding-top: 0;border: 1px solid #dcdcdc}
   .weui-tabbar__item.item.weui-bar__item_on{background: #f885b7;border: 0}
   .item .weui-tabbar__icon{position: relative;width: 100%;height: 100%}
