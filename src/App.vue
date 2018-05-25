@@ -1,12 +1,11 @@
 <template>
   <div>
-      <transition :name="transitionName">
-     <div id="body" :style="height">
-         <router-view class="child-view"></router-view>
-     </div>
-    </transition>
+
+     <transition :name="transitionName">
+     <router-view class="child-view" id="body" :style="height"></router-view>
+     </transition>
     <ctab-bar></ctab-bar>
-    <!--<loading v-model="isLoading"></loading>-->
+    <loading v-model="isLoading"></loading>
   </div>
 </template>
 
@@ -64,17 +63,22 @@
         width:100%;
     }
     .slide-left-enter, .slide-right-leave-active {
-        opacity: 0;
-        -webkit-transform: translate(50px, 0);
-        transform: translate(50px, 0);
-        transition: all 0.2s linear;
-
+        opacity: 1;
+        -webkit-transform: translate(-7.5rem, 0);
+        transform: translate(-7.5rem, 0);
+        transition: all 0.7s linear;
+    }
+    .slide-left-enter-to{
+        opacity: 1;
+        -webkit-transform: translate(0px, 0);
+        transform: translate(0px, 0);
+        transition: all 0.7s linear;
     }
     .slide-left-leave-active, .slide-right-enter {
-        opacity: 0;
-        -webkit-transform: translate(-50px, 0);
-        transform: translate(-50px, 0);
-        transition: all 0.2s linear;
+        opacity: 1;
+        -webkit-transform: translate(7.5rem, 0);
+        transform: translate(7.5rem, 0);
+        transition: all 0.7s linear;
 
     }
   .content{padding: 20px 0;}
