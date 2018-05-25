@@ -1,12 +1,12 @@
 <template>
   <div>
-    <!--<transition name="router-fade" mode="out-in">-->
+      <transition :name="transitionName">
      <div id="body" :style="height">
-       <router-view/>
+         <router-view class="child-view"></router-view>
      </div>
-    <!--</transition>-->
+    </transition>
     <ctab-bar></ctab-bar>
-    <loading v-model="isLoading"></loading>
+    <!--<loading v-model="isLoading"></loading>-->
   </div>
 </template>
 
@@ -21,7 +21,8 @@
                 height:{
                    overflow:'',
                     height:'',
-                }
+                },
+                transitionName: 'slide-left'
             }
         },
         components:{
@@ -32,6 +33,16 @@
             ...mapState({
                 isLoading: state => state.vux.isLoading,
             })
+        },
+        beforeRouteUpdate (to, from, next) {
+            let isBack = this.$router.isBack
+            if (isBack) {
+                this.transitionName = 'slide-right'
+            } else {
+                this.transitionName = 'slide-left'
+            }
+            this.$router.isBack = false
+            next()
         },
         created(){
             this.hh()
@@ -48,11 +59,23 @@
 </script>
 
 <style lang="scss">
-/*  .router-fade-enter-active, .router-fade-leave-active {
-    transition: opacity .3s;
-  }
-  .router-fade-enter, .router-fade-leave-active {
-    opacity: 0;
-  }*/
+    .child-view {
+        position: absolute;
+        width:100%;
+    }
+    .slide-left-enter, .slide-right-leave-active {
+        opacity: 0;
+        -webkit-transform: translate(50px, 0);
+        transform: translate(50px, 0);
+        transition: all 0.2s linear;
+
+    }
+    .slide-left-leave-active, .slide-right-enter {
+        opacity: 0;
+        -webkit-transform: translate(-50px, 0);
+        transform: translate(-50px, 0);
+        transition: all 0.2s linear;
+
+    }
   .content{padding: 20px 0;}
 </style>
