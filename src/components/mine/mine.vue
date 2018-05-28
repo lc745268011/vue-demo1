@@ -11,6 +11,7 @@
             <badge text="8"></badge>
           </div>
         </cell>
+        <cell title="100件说我爱你" link="hundred"></cell>
         <cell title="关联我的他/她"></cell>
         <cell title="退出登录"></cell>
       </group>

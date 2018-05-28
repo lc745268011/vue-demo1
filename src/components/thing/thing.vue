@@ -62,7 +62,6 @@
     }
 </script>
 <style>
-    body{background: rebeccapurple;}
     .stack-wrapper{
         margin: 0 auto;
         position: relative;

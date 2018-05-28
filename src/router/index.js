@@ -11,6 +11,7 @@ const mine = r => require.ensure([], () => r(require('../components/mine/mine'))
 const audit = r => require.ensure([], () => r(require('../components/mine/audit')))
 const newsDetail = r => require.ensure([], () => r(require('../components/news/newsDetail')))
 const thing = r => require.ensure([], () => r(require('../components/thing/thing')))
+const hundred = r => require.ensure([], () => r(require('../components/mine/hundred')))
 
 Vue.use(Router)
 
@@ -65,7 +66,12 @@ export default new Router({
             name:'thing',
             path: '/thing',
             component: thing
-        }
+        },
+          {
+              name:'hundred',
+              path: '/hundred',
+              component: hundred
+          }
 
 
       ]

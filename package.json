@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "flex.css": "^1.1.7",
+    "islider.js": "^2.2.2",
     "lrz": "^4.9.40",
     "n-zepto": "^1.2.0",
     "node-sass": "^4.9.0",
