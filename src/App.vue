@@ -4,7 +4,6 @@
      <router-view class="child-view" id="body" :style="height"></router-view>
      </transition>
       <button @click="showMenu" class="btn">{{text}}</button>
-      <!--修改电脑用户名-->
       <transition name="move">
           <div class="menu" v-show="show">
               <div class="inner inner-1">1</div>
