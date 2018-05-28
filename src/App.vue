@@ -78,8 +78,8 @@
     }
     .slide-left-enter, .slide-right-leave-active {
         opacity: 1;
-        -webkit-transform: translate(-7.5rem, 0);
-        transform: translate(-7.5rem, 0);
+        -webkit-transform: translate(7.5rem, 0);
+        transform: translate(7.5rem, 0);
         transition: all 0.7s linear;
     }
     .slide-left-enter-to{
@@ -90,8 +90,8 @@
     }
     .slide-left-leave-active, .slide-right-enter {
         opacity: 1;
-        -webkit-transform: translate(7.5rem, 0);
-        transform: translate(7.5rem, 0);
+        -webkit-transform: translate(-7.5rem, 0);
+        transform: translate(-7.5rem, 0);
         transition: all 0.7s linear;
 
     }

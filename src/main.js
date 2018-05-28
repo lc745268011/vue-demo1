@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/store'
+import stack from './components/thing/thing'
 Vue.config.productionTip = false
 import Swiper from 'swiper/dist/js/swiper.js'
 window.Swiper = Swiper
@@ -18,6 +19,7 @@ import './assets/js/rem.js'
 new Vue({
   // el: '#app',
   router,
+    stack,
   store,
   // components: { App },
   // template: '<App/>'

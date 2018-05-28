@@ -10,6 +10,7 @@ const shopcart = r => require.ensure([], () => r(require('../components/shopcart
 const mine = r => require.ensure([], () => r(require('../components/mine/mine')))
 const audit = r => require.ensure([], () => r(require('../components/mine/audit')))
 const newsDetail = r => require.ensure([], () => r(require('../components/news/newsDetail')))
+const thing = r => require.ensure([], () => r(require('../components/thing/thing')))
 
 Vue.use(Router)
 
@@ -59,6 +60,11 @@ export default new Router({
           name:'newsDetail',
           path: '/newsDetail',
           component: newsDetail
+        },
+        {
+            name:'thing',
+            path: '/thing',
+            component: thing
         }
 
 
