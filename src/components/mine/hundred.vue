@@ -1,106 +1,146 @@
+<style lang="sass">
+    @import "../../utils/common.scss"
+</style>
 <template>
     <div>
-     <!-- <div class="container">
-        <ul>
-          <li v-for="(item, index) in list">
-            <div :style="{background:item.bg}"></div>
-            <div>{{item.tips}}</div>
-          </li>
-        </ul>
-      </div>-->
-      <div id="iSlider-wrapper"></div>
+        <div style="width:100%;margin:20px auto;height:400px">
+            <slider ref="slider" @tap='onTap' :pages="someList" :sliderinit="sliderinit" @slide='slide' @init='onInit'>
+                <div slot="loading">
+                    <div class="loadingDot">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+                </div>
+            </slider>
+        </div>
     </div>
 </template>
 <script>
-    import '../../assets/css/iSlider.css'
-    import '../../assets/js/iSlider.js'
-    import '../../assets/js/iSlider.animate.js'
+    import slider from './slider'
     export default {
-        data(){
+        data () {
             return {
-             /* list:[
-                  {
-                  bg:'red',
-                  tips:'11111'
-                  },{
-                      bg:'yellow',
-                      tips:'22222'
-                  },{
-                      bg:'blue',
-                      tips:'33333'
-                  },{
-                      bg:'pink',
-                      tips:'44444'
-                  },{
-                      bg:'black',
-                      tips:'55555'
-                  }],*/
-                img:[{content: "/static/img/1.png"},
-                    {content: "/static/img/2.png"},
-                    {content: "/static/img/6.png"}]
+                someList: [],
+                sliderinit: {
+                    effect: 'coverflow',
+                    currentPage: 1,
+                    tracking: false,
+                    thresholdDistance: 100, // 滑动距离阈值判定
+                    thresholdTime: 300, // 滑动时间阈值判定
+                    deviation: 200, // 偏移值
+                    widthScalingRatio: 0.8, // 宽度缩放比例
+                    heightScalingRatio: 0.8, // 高度缩放比例
+                    infinite: 2, // 多级滚动时，需要添加前后遍历数
+                    slidesToScroll: 1, // 需要滚动页面的数量
+                    loop: true // 无限循环
+                    // autoplay: 1000 // 自动播放:时间[ms]
+                }
             }
         },
-        mounted:function(){
-            var S = new iSlider(document.getElementById('iSlider-wrapper'), this.img, {
-                isLooping: 1,
-                isOverspread: 1,
-                isAutoplay: 1,
-                animateTime: 800,
-                animateType: 'flow',
-                onslideRestore:function () {
-                    console.log(1)
-                }
-            });
+        components: {
+            slider
         },
-       /* methods:{
-           slideClick:function () {
-               
-           } 
-        }*/
+        mounted () {
+            let that = this
+            setTimeout(function () {
+                that.someList = [
+                    {
+                        html: 'slide1',
+                        style: {
+                            'background': '#1bbc9b',
+                            'width': '5rem'
+                        }
+                    },
+                    {
+                        html: 'slide2',
+                        style: {
+                            'background': '#4bbfc3',
+                            'width': '5rem'
+                        }
+                    },
+                    {
+                        html: 'slide3',
+                        style: {
+                            'background': '#7baabe',
+                            'width': '5rem'
+                        }
+                    },
+                    {
+                        html: 'slide4',
+                        style: {
+                            'background': '#1bbc9b',
+                            'width': '5rem'
+                        }
+                    },
+                    {
+                        html: 'slide5',
+                        style: {
+                            'background': '#4bbfc3',
+                            'width': '5rem'
+                        }
+                    },
+                    {
+                        html: 'slide6',
+                        style: {
+                            'background': '#7baabe',
+                            'width': '5rem'
+                        }
+                    }
+                ]
+            }, 2000)
+        },
+        methods: {
+            turnTo (num) {
+                // 传递事件 vue 2.0 传递事件修改了，好的写法应该直接写在空vue类中
+                this.$refs.slider.$emit('slideTo', num)
+            },
+            slideNext () {
+                this.$refs.slider.$emit('slideNext')
+                // slider.$emit('slideNext')
+            },
+            slidePre () {
+                this.$refs.slider.$emit('slidePre')
+                // slider.$emit('slidePre')
+            },
+            autoplayStart () {
+                this.$refs.slider.$emit('autoplayStart')
+                // slider.$emit('slidePre')
+            },
+            autoplayStop () {
+                this.$refs.slider.$emit('autoplayStop')
+                // slider.$emit('slidePre')
+            },
+            appendslider () {
+                this.someList.push({
+                    html: 'slidernew',
+                    style: {
+                        background: '#333',
+                        color: '#fff',
+                        width: '23.5%',
+                        'margin-right': '2%'
+                    }
+                })
+            },
+            loadingShow () {
+                this.$refs.slider.$emit('loadingShow')
+                // slider.$emit('slidePre')
+            },
+            loadingHide () {
+                this.$refs.slider.$emit('loadingHide')
+                // slider.$emit('slidePre')
+            },
+            // 监听事件发生了变化,需要指向一个子组件实例
+            slide (data) {
+                console.log(data)
+            },
+            onTap (data) {
+                console.log(data)
+            },
+            onInit (data) {
+                console.log(data)
+            }
+        }
     }
 </script>
-<style scoped>
-  li{width: 6rem;height: 3rem;border: 1px solid #dcdcdc; display: -webkit-box; -webkit-box-pack: center; -webkit-box-align: center; }
-  li div:first-child{width: 100%;height: 1rem}
-</style>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: #333;
-        overflow: hidden;
-    }
-
-    /*ul wrapper*/
-    #iSlider-wrapper {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        position: absolute;
-    }
-
-    #iSlider-wrapper ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    #iSlider-wrapper li {
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-pack: center;
-        -webkit-box-align: center;
-        list-style: none;
-    }
-
-    #iSlider-wrapper li img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-</style>
