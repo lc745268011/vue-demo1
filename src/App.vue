@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%">
      <transition :name="transitionName">
      <router-view class="child-view" id="body" :style="height"></router-view>
      </transition>
@@ -54,13 +54,12 @@
             this.$router.isBack = false
             next()
         },
-        created(){
+        mounted(){
             this.hh()
         },
         methods:{
             hh(){
-                this.height.height=window.innerHeight-53+'px';
-                this.height.overflow='scroll';
+                this.height.height=window.innerHeight-54+'px';
             },
             showMenu () {
                 this.show = !this.show;
@@ -73,26 +72,27 @@
 
 <style lang="scss">
     .child-view {
-        position: absolute;
+        /*position: absolute;*/
         width:100%;
+        overflow-y: scroll;
     }
     .slide-left-enter, .slide-right-leave-active {
         opacity: 1;
         -webkit-transform: translate(7.5rem, 0);
         transform: translate(7.5rem, 0);
-        transition: all 0.7s linear;
+        transition: all 0.5s linear;
     }
     .slide-left-enter-to{
         opacity: 1;
-        -webkit-transform: translate(0px, 0);
-        transform: translate(0px, 0);
-        transition: all 0.7s linear;
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+        transition: all 0.5s linear;
     }
     .slide-left-leave-active, .slide-right-enter {
         opacity: 1;
-        -webkit-transform: translate(-7.5rem, 0);
-        transform: translate(-7.5rem, 0);
-        transition: all 0.7s linear;
+        -webkit-transform: translate(7.5rem, 0);
+        transform: translate(7.5rem, 0);
+        transition: all 0.5s linear;
 
     }
   .content{padding: 20px 0;}

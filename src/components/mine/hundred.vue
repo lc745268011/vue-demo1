@@ -7,7 +7,9 @@
                     <p>{{item.content}}</p>
                 </div>
             </div>
+            <div class="swiper-pagination"></div>
         </div>
+
     </div>
 </template>
 <script>
@@ -34,6 +36,10 @@
                     modifier: 1,
                     slideShadows : true,
                 },
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
             });
         },
         methods:{
@@ -60,8 +66,8 @@
     .swiper-slide {
         background-position: center;
         background-size: cover;
-        width: 6rem;
-        height: 6rem;
+        width: 300px;
+        height: 300px;
 
     }
 </style>

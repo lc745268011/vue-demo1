@@ -24,6 +24,7 @@ select {
   padding: 0;
   box-sizing: border-box;
 }
+#body::-webkit-scrollbar,body::-webkit-scrollbar,html::-webkit-scrollbar {display:none}
 body {
   font: 14px "微软雅黑", "Arial Narrow", HELVETICA;
   background: #fff;
