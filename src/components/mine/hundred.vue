@@ -60,8 +60,8 @@
     .swiper-slide {
         background-position: center;
         background-size: cover;
-        width: 300px;
-        height: 300px;
+        width: 6rem;
+        height: 6rem;
 
     }
 </style>

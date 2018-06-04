@@ -19,7 +19,7 @@
     "n-zepto": "^1.2.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "swiper": "^4.2.2",
+    "swiper": "^4.3.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue-tantan-stack": "^1.0.0",
