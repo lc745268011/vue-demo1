@@ -14,7 +14,6 @@ import '../node_modules/swiper/dist/css/swiper.css';
 import '../node_modules/weui/dist/style/weui.css';
 import '../node_modules/flex.css';
 import './assets/js/rem.js'
-
 /* eslint-disable no-new */
 new Vue({
   // el: '#app',

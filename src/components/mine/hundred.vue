@@ -1,146 +1,67 @@
-<style lang="sass">
-    @import "../../utils/common.scss"
-</style>
 <template>
     <div>
-        <div style="width:100%;margin:20px auto;height:400px">
-            <slider ref="slider" @tap='onTap' :pages="someList" :sliderinit="sliderinit" @slide='slide' @init='onInit'>
-                <div slot="loading">
-                    <div class="loadingDot">
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                    </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(item, index) in sliders"  @click="aaa(index)">
+                    <img :src="item.img" alt="" style="width: 100%">
+                    <p>{{item.content}}</p>
                 </div>
-            </slider>
+            </div>
         </div>
     </div>
 </template>
 <script>
-    import slider from './slider'
     export default {
         data () {
             return {
-                someList: [],
-                sliderinit: {
-                    effect: 'coverflow',
-                    currentPage: 1,
-                    tracking: false,
-                    thresholdDistance: 100, // 滑动距离阈值判定
-                    thresholdTime: 300, // 滑动时间阈值判定
-                    deviation: 200, // 偏移值
-                    widthScalingRatio: 0.8, // 宽度缩放比例
-                    heightScalingRatio: 0.8, // 高度缩放比例
-                    infinite: 2, // 多级滚动时，需要添加前后遍历数
-                    slidesToScroll: 1, // 需要滚动页面的数量
-                    loop: true // 无限循环
-                    // autoplay: 1000 // 自动播放:时间[ms]
-                }
+                sliders:[
+                    {img:'./static/img/1.png',content:"去吃重庆火锅"},
+                    {img:'./static/img/2.png',content:"去爬泰山"},
+                    {img:'./static/img/3.png',content:"去海边吹风"}
+                ]
             }
         },
-        components: {
-            slider
+        mounted:function () {
+            var swiper = new Swiper('.swiper-container', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows : true,
+                },
+            });
         },
-        mounted () {
-            let that = this
-            setTimeout(function () {
-                that.someList = [
-                    {
-                        html: 'slide1',
-                        style: {
-                            'background': '#1bbc9b',
-                            'width': '5rem'
-                        }
-                    },
-                    {
-                        html: 'slide2',
-                        style: {
-                            'background': '#4bbfc3',
-                            'width': '5rem'
-                        }
-                    },
-                    {
-                        html: 'slide3',
-                        style: {
-                            'background': '#7baabe',
-                            'width': '5rem'
-                        }
-                    },
-                    {
-                        html: 'slide4',
-                        style: {
-                            'background': '#1bbc9b',
-                            'width': '5rem'
-                        }
-                    },
-                    {
-                        html: 'slide5',
-                        style: {
-                            'background': '#4bbfc3',
-                            'width': '5rem'
-                        }
-                    },
-                    {
-                        html: 'slide6',
-                        style: {
-                            'background': '#7baabe',
-                            'width': '5rem'
-                        }
-                    }
-                ]
-            }, 2000)
-        },
-        methods: {
-            turnTo (num) {
-                // 传递事件 vue 2.0 传递事件修改了，好的写法应该直接写在空vue类中
-                this.$refs.slider.$emit('slideTo', num)
-            },
-            slideNext () {
-                this.$refs.slider.$emit('slideNext')
-                // slider.$emit('slideNext')
-            },
-            slidePre () {
-                this.$refs.slider.$emit('slidePre')
-                // slider.$emit('slidePre')
-            },
-            autoplayStart () {
-                this.$refs.slider.$emit('autoplayStart')
-                // slider.$emit('slidePre')
-            },
-            autoplayStop () {
-                this.$refs.slider.$emit('autoplayStop')
-                // slider.$emit('slidePre')
-            },
-            appendslider () {
-                this.someList.push({
-                    html: 'slidernew',
-                    style: {
-                        background: '#333',
-                        color: '#fff',
-                        width: '23.5%',
-                        'margin-right': '2%'
-                    }
-                })
-            },
-            loadingShow () {
-                this.$refs.slider.$emit('loadingShow')
-                // slider.$emit('slidePre')
-            },
-            loadingHide () {
-                this.$refs.slider.$emit('loadingHide')
-                // slider.$emit('slidePre')
-            },
-            // 监听事件发生了变化,需要指向一个子组件实例
-            slide (data) {
-                console.log(data)
-            },
-            onTap (data) {
-                console.log(data)
-            },
-            onInit (data) {
-                console.log(data)
+        methods:{
+            aaa:function (index) {
+                console.log(index)
             }
         }
     }
 </script>
+<style>
+    body {
+        background: #fff;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 300px;
+
+    }
+</style>

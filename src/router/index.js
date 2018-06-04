@@ -67,11 +67,11 @@ export default new Router({
             path: '/thing',
             component: thing
         },
-          {
-              name:'hundred',
-              path: '/hundred',
-              component: hundred
-          }
+        {
+            name:'hundred',
+            path: '/hundred',
+            component: hundred
+        }
 
 
       ]
