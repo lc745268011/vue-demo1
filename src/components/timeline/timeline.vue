@@ -9,7 +9,6 @@
         <h2 v-text="point.title"></h2>
         <img :src="point.contentImg" alt="" v-if="point.contentImg" width="100%">
         <p v-text="point.text"></p>
-        <!--<a :href="point.linkUrl" class="read-more" target="_blank" v-if="point.linkUrl" v-html="point.linkText!=undefined?point.linkText:'Read more'"></a>-->
         <span v-if="point.date" class="date" v-text="point.date"></span>
       </div>
     </div>

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <p @click="goback">fanhui</p>
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(item, index) in sliders"  @click="aaa(index)">
@@ -45,6 +46,9 @@
         methods:{
             aaa:function (index) {
                 console.log(index)
+            },
+            goback(){
+                window.history.back()
             }
         }
     }

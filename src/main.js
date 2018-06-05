@@ -18,7 +18,7 @@ import './assets/js/rem.js'
 new Vue({
   // el: '#app',
   router,
-    stack,
+  stack,
   store,
   // components: { App },
   // template: '<App/>'

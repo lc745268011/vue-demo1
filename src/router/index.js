@@ -13,9 +13,10 @@ const newsDetail = r => require.ensure([], () => r(require('../components/news/n
 const thing = r => require.ensure([], () => r(require('../components/thing/thing')))
 const hundred = r => require.ensure([], () => r(require('../components/mine/hundred')))
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -25,7 +26,8 @@ export default new Router({
         {
           name:'home',
           path: '/home',
-          component: home
+          component: home,
+          meta: { keepAlive: true }
         },
         {
           name:'member',
@@ -76,5 +78,15 @@ export default new Router({
 
       ]
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+      if (savedPosition) {
+          return savedPosition
+      } else {
+          if (from.meta.keepAlive) {
+              from.meta.savedPosition = document.body.scrollTop;
+          }
+          return { x: 0, y: to.meta.savedPosition || 0 }
+      }
+  },
 })

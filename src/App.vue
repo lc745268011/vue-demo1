@@ -1,7 +1,12 @@
 <template>
   <div style="width: 100%">
      <transition :name="transitionName">
-     <router-view class="child-view" id="body" :style="height"></router-view>
+         <keep-alive>
+            <router-view class="child-view body1" v-if="$route.meta.keepAlive"></router-view>
+         </keep-alive>
+     </transition>
+      <transition :name="transitionName">
+        <router-view class="child-view body2" v-if="!$route.meta.keepAlive"></router-view>
      </transition>
       <button @click="showMenu" class="btn">{{text}}</button>
       <transition name="move">
@@ -52,15 +57,10 @@
                 this.transitionName = 'slide-left'
             }
             this.$router.isBack = false
-            next()
-        },
-        mounted(){
-            this.hh()
+            next();
+            this.show=false
         },
         methods:{
-            hh(){
-                this.height.height=window.innerHeight-54+'px';
-            },
             showMenu () {
                 this.show = !this.show;
             }
