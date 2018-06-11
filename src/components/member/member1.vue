@@ -1,8 +1,8 @@
 <template>
     <div class="content">
-        <!-- agoDayHide='1517483961' -->
+         <!--agoDayHide='1527838753'-->
         <!-- futureDayHide="1526054400" -->
-        <Calendar ref="Calendar" v-on:isToday="clickToday" agoDayHide=1530115200 v-on:choseDay="clickDay" v-on:changeMonth="changeDate"></Calendar>
+        <Calendar ref="Calendar" v-on:isToday="clickToday" v-on:choseDay="clickDay" v-on:changeMonth="changeDate"></Calendar>
 <!--
         <Calendar ref="Calendar" :markDateMore="arr" :markDate="arr2" v-on:isToday="clickToday" agoDayHide=1530115200 v-on:choseDay="clickDay" v-on:changeMonth="changeDate"></Calendar>
 -->
