@@ -4,6 +4,7 @@ import Router from 'vue-router'
 
 const home = r => require.ensure([], () => r(require('../components/home/home')))
 const member = r => require.ensure([], () => r(require('../components/member/member')))
+const member1 = r => require.ensure([], () => r(require('../components/member/member1')))
 const news = r => require.ensure([], () => r(require('../components/news/newsList')))
 const chooseType = r => require.ensure([], () => r(require('../components/shopcart/chooseType')))
 const shopcart = r => require.ensure([], () => r(require('../components/shopcart/shopcart')))
@@ -33,6 +34,11 @@ export default new Router({
           name:'member',
           path: '/member',
           component: member
+        },
+        {
+          name:'member1',
+          path: '/member1',
+          component: member1
         },
         {
           name:'news',

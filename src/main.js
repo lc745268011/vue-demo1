@@ -14,6 +14,8 @@ import '../node_modules/swiper/dist/css/swiper.css';
 import '../node_modules/weui/dist/style/weui.css';
 import '../node_modules/flex.css';
 import './assets/js/rem.js'
+import Toast from 'vue-toast-component';
+Vue.use(Toast);
 /* eslint-disable no-new */
 new Vue({
   // el: '#app',
