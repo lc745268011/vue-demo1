@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p @click="goback">fanhui</p>
+        <!--<p @click="goback">fanhui</p>-->
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(item, index) in sliders"  @click="aaa(index)">
@@ -8,7 +8,7 @@
                     <p>{{item.content}}</p>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
+            <!--<div class="swiper-pagination"></div>-->
         </div>
 
     </div>
@@ -37,9 +37,9 @@
                     modifier: 1,
                     slideShadows : true,
                 },
-                pagination: {
+                /*pagination: {
                     el: '.swiper-pagination',
-                },
+                },*/
 
             });
         },
@@ -74,4 +74,5 @@
         height: 300px;
 
     }
+    .swiper-slide p{text-align: center;font-size: 0.32rem;margin: 0.1rem 0}
 </style>

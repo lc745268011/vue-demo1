@@ -93,7 +93,7 @@
         width: 220px;
         height: 44px;
         line-height: 44px;
-        background: #0fc37c;
+        background: #f885b7;
         color: #fff;
         font-size: 17px;
         text-align: center;
@@ -109,8 +109,14 @@
         background: orange;
     }*/
     .wh_content_item .wh_chose_day {
-        background: #fff;
-        border-radius: 100px;
-        color: #0fc37c;
+        background: #acacac;
+        color: #eee;
     }
+    .wh_content_item .wh_isToday{
+        background: #f885b7;
+        color: #fff;
+    }
+    .wh_content_all{background: transparent;}
+    .wh_jiantou2,.wh_jiantou1{border-color: #f885b7}
+    .wh_top_changge li,.wh_content_item, wh_content_item_tag{color: #f885b7}
 </style>

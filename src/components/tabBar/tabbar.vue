@@ -7,7 +7,7 @@
           <img slot="icon-active" src="../../assets/img/home1.png">
           <span slot="label">首页</span>
         </tabbar-item>
-        <tabbar-item link="/member" :selected="$route.name === 'member'">
+        <tabbar-item link="/member1" :selected="$route.name === 'member1'">
           <img slot="icon" src="../../assets/img/love.png">
           <img slot="icon-active" src="../../assets/img/love1.png">
           <span slot="label">纪念日</span>
@@ -23,7 +23,7 @@
           <img slot="icon-active" src="../../assets/img/qiao1.png">
           <span slot="label">悄悄话</span>
         </tabbar-item>
-        <tabbar-item link="/mine" :selected="$route.name === 'mine'||$route.name === 'audit'">
+        <tabbar-item link="/mine" :selected="$route.name === 'mine'||$route.name === 'audit'||$route.name === 'hundred'">
           <img slot="icon" src="../../assets/img/mine.png">
           <img slot="icon-active" src="../../assets/img/mine1.png">
           <span slot="label">我的</span>
@@ -48,7 +48,7 @@
 </script>
 
 <style>
-  .weui-tabbar.tabbar{position: fixed;}
+  .weui-tabbar.tabbar{position: fixed;left: 0;right: 0;width: 100%}
   .weui-tabbar__item.item{position: absolute;width: 50px;height: 50px;display: inline-block;border-radius: 50%;background: #fff;margin: auto;left: 0;right: 0;bottom: 15px;padding-top: 0;border: 1px solid #dcdcdc}
   .weui-tabbar__item.item.weui-bar__item_on{background: #f885b7;border: 0}
   .item .weui-tabbar__icon{position: relative;width: 100%;height: 100%}

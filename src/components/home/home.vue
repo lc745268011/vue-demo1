@@ -6,7 +6,7 @@
       <img :src="avater.male" class="male" alt="">
     </div>
     <timeLine :points="points"></timeLine>
-    <router-link to="/hundred">111</router-link>
+    <!--<router-link to="/hundred">111</router-link>-->
   </div>
 </template>
 

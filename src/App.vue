@@ -1,13 +1,13 @@
 <template>
   <div style="width: 100%">
-     <transition :name="transitionName">
+     <!--<transition :name="transitionName">-->
          <keep-alive>
             <router-view class="child-view body1" v-if="$route.meta.keepAlive"></router-view>
          </keep-alive>
-     </transition>
-      <transition :name="transitionName">
+     <!--</transition>-->
+      <!--<transition :name="transitionName">-->
         <router-view class="child-view body2" v-if="!$route.meta.keepAlive"></router-view>
-     </transition>
+     <!--</transition>-->
       <button @click="showMenu" class="btn">{{text}}</button>
       <transition name="move">
           <div class="menu" v-show="show">
