@@ -1,13 +1,13 @@
 <template>
   <div style="width: 100%">
-     <!--<transition :name="transitionName">-->
+     <transition name="fade" mode="out-in">
          <keep-alive>
             <router-view class="child-view body1" v-if="$route.meta.keepAlive"></router-view>
          </keep-alive>
-     <!--</transition>-->
-      <!--<transition :name="transitionName">-->
+     </transition>
+      <transition name="fade" mode="out-in">
         <router-view class="child-view body2" v-if="!$route.meta.keepAlive"></router-view>
-     <!--</transition>-->
+     </transition>
       <button @click="showMenu" class="btn">{{text}}</button>
       <transition name="move">
           <div class="menu" v-show="show">
@@ -76,24 +76,11 @@
         width:100%;
         overflow-y: scroll;
     }
-    .slide-left-enter, .slide-right-leave-active {
-        opacity: 1;
-        -webkit-transform: translate(7.5rem, 0);
-        transform: translate(7.5rem, 0);
-        transition: all 0.5s linear;
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
     }
-    .slide-left-enter-to{
-        opacity: 1;
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-        transition: all 0.5s linear;
-    }
-    .slide-left-leave-active, .slide-right-enter {
-        opacity: 1;
-        -webkit-transform: translate(7.5rem, 0);
-        transform: translate(7.5rem, 0);
-        transition: all 0.5s linear;
-
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
     }
   .content{padding: 20px 0;}
 
