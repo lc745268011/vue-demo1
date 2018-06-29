@@ -33,7 +33,7 @@
   .timeline {
     position: relative;
     padding:0 ;
-    margin-top: 2em;
+    margin-top: 1em;
     margin-bottom: 2em;
   }
   .timeline::before {
@@ -135,8 +135,8 @@
     position: relative;
     margin-left: 1rem;
     background: white;
-    border-radius: 0.14rem;
-    padding: 0.2rem;
+    border-radius: 0.1rem;
+    padding:0.1rem 0.3rem;
     color: #ffffff;
     /*box-shadow: 0 3px 0 #d7e4ed;*/
     background: $tonal;
@@ -151,6 +151,8 @@
   .timeline-content h2 {
     color: #ffffff;
     font-size: 0.36rem;
+    font-weight: normal;
+    margin-top: 0.1rem;
   }
   .timeline-content p, .timeline-content .read-more, .timeline-content .date {
     font-size: 13px;

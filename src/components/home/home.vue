@@ -97,8 +97,8 @@ export default {
         date: '2017-1-1' // 时间点
       }],
         avater:{
-            male:"https://ss0.bdstatic.com/6ONWsjip0QIZ8tyhnq/it/u=3618554304,2887917621&fm=77&w_h=121_75&cs=2820658166,1330608299",
-            female:"https://gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg"
+            male:"./static/img/1.jpg",
+            female:"./static/img/2.jpg"
         }
 
 
@@ -117,5 +117,5 @@ export default {
   .avater{width: 100%;text-align: center;margin: 0.2rem 0}
   .avater img{width: 1.2rem;height: 1.2rem;border-radius: 50%;overflow: hidden;-webkit-box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
     box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);}
-  .avater img:last-child{margin-left: -0.2rem;}
+  .avater img:last-child{margin-left: -0.1rem;}
 </style>

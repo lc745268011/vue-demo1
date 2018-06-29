@@ -55,8 +55,8 @@ export default {
   #app .vux-header .vux-header-left .left-arrow:before{border: 1px solid #fff;border-width: 1px 0 0 1px;}
   .btnGroup{width: 100%;display: flex;justify-content: space-between;}
   .btnGroup button{width: 2.8rem;border: 0;color: #fff;padding: 0.16rem 0;border-radius:0.3rem; margin-top: 0.3rem}
-  .btnGroup button.yes{background: #ccc}
-  .btnGroup button.no{background: $tonal}
+  .btnGroup button.yes{background: $tonal}
+  .btnGroup button.no{background: #999}
   .auditList li .listImg{text-align: $center;margin-bottom: 0.3rem}
   .auditList li .listImg img{height: 3rem;}
   .auditList li .font18{font-weight: bold;margin-bottom: 0.2rem}

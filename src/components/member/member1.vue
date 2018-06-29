@@ -1,47 +1,43 @@
 <template>
     <div class="content">
-         <!--agoDayHide='1527838753'-->
-        <!-- futureDayHide="1526054400" -->
         <Calendar ref="Calendar" v-on:isToday="clickToday" v-on:choseDay="clickDay" v-on:changeMonth="changeDate"></Calendar>
-<!--
-        <Calendar ref="Calendar" :markDateMore="arr" :markDate="arr2" v-on:isToday="clickToday" agoDayHide=1530115200 v-on:choseDay="clickDay" v-on:changeMonth="changeDate"></Calendar>
--->
-       <!-- <div class="div" @click="demo ">
-            点击跳到2018-12-12
-        </div>-->
+        <!--弹框-->
+        <x-dialog v-model="showHideOnBlur" class="dialog-demo" hide-on-blur>
+            <div class="img-box">
+              <!--  <img src="https://ws1.sinaimg.cn/large/663d3650gy1fq6824ur1dj20ia0pydlm.jpg" style="max-width:100%">-->
+                <div class="vCenter">
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div @click="showHideOnBlur=false">
+                <button class="submit dialogbtn">提交</button>
+            </div>
+            <div @click="showHideOnBlur=false">
+                <button class="close dialogbtn">取消</button>
+            </div>
+
+        </x-dialog>
     </div>
 </template>
 
 <script>
-    // import Calendar from '../vue-calendar-component/index';
+    import { XDialog } from 'vux'
     import Calendar from 'vue-calendar-component';
     export default {
         data() {
             return {
-               /* arr2: ['2018-6-23'],
-                arr: [
-                    {
-                        date: '2018/6/1',
-                        className: 'mark1'
-                    },
-                    {
-                        date: '2018/6/2',
-                        className: 'mark1'
-                    },
-                    {
-                        date: '2018/6/13',
-                        className: 'mark2'
-                    }
-                ]*/
+                showHideOnBlur: false,
             };
         },
         components: {
-            Calendar
+            Calendar,
+            XDialog
         },
         methods: {
             clickDay(data) {
                 console.log('选中了', data); //选中某天
-                this.$toast('选中了' + data);
+                // this.$toast('选中了' + data);
+                this.showHideOnBlur=true
             },
             clickToday(data) {
                 console.log('跳到了本月今天', data); //跳到了本月
@@ -55,31 +51,33 @@
             }
         },
         created() {
-            /*function format(date, index) {
-                date = new Date(date);
-                return `${date.getFullYear()}-${date.getMonth() + 1}-${index}`;
-            }
-            this.arr = [
-                {
-                    date: format(new Date(), 1),
-                    className: 'mark1'
-                },
-                {
-                    date: format(new Date(), 2),
-                    className: 'mark1'
-                },
-                {
-                    date: format(new Date(), 13),
-                    className: 'mark2'
-                }
-            ];
-            this.arr2 = [format(new Date(), 23)]*/
         }
     };
 </script>
 
 <!-- Add "scoped " attribute to limit CSS to this component only -->
-<style>
+<style lang="scss">
+    textarea{width: 90%;margin: auto;height: 90%;padding: 0.2rem}
+    textarea:focus{outline: none}
+    .dialogbtn{width: 50%;float: left;border: 0;background: none;height: 0.8rem;line-height: 0.8rem;font-size: 0.28rem}
+    .dialogbtn.submit{background: $tonal;color: #fff}
+    .dialogbtn.close{background: #999;color: #fff}
+    .dialog-demo .weui-dialog{
+        border-radius: 8px;
+    }
+    .dialog-demo .dialog-title {
+        line-height: 30px;
+        color: #666;
+    }
+    .dialog-demo .img-box {
+        height: 250px;
+        overflow: hidden;
+    }
+    .dialog-demo .img-box>div{height: 100%}
+    .dialog-demo .vux-close {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
     .content {
         padding: 0;
     }
