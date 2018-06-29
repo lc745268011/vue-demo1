@@ -1,22 +1,23 @@
 <template>
   <div style="width: 100%">
-     <transition name="fade" mode="out-in">
-         <keep-alive>
-            <router-view class="child-view body1" v-if="$route.meta.keepAlive"></router-view>
-         </keep-alive>
-     </transition>
-      <transition name="fade" mode="out-in">
-        <router-view class="child-view body2" v-if="!$route.meta.keepAlive"></router-view>
-     </transition>
-      <button @click="showMenu" class="btn">{{text}}</button>
-      <transition name="move">
-          <div class="menu" v-show="show">
-              <div class="inner inner-1">1</div>
-              <div class="inner inner-2">2</div>
-              <div class="inner inner-3">3</div>
+      <div class="box">
+          <div class="contain">
+              <div class="main">
+                  <transition :name="transitionName">
+                      <router-view class="child-view"></router-view>
+                  </transition>
+                  <button @click="showMenu" class="btn">{{text}}</button>
+                  <transition name="move">
+                      <div class="menu" v-show="show">
+                          <div class="inner inner-1">1</div>
+                          <div class="inner inner-2">2</div>
+                          <div class="inner inner-3">3</div>
+                      </div>
+                  </transition>
+              </div>
+              <ctab-bar></ctab-bar>
           </div>
-      </transition>
-    <ctab-bar></ctab-bar>
+      </div>
     <loading v-model="isLoading"></loading>
   </div>
 </template>
@@ -33,7 +34,7 @@
                    overflow:'',
                     height:'',
                 },
-                transitionName: 'slide-left',
+                transitionName: '',
                 show: false
             }
         },
@@ -49,16 +50,15 @@
                 return this.show ? '收' : '开';
             }
         },
-        beforeRouteUpdate (to, from, next) {
-            let isBack = this.$router.isBack
-            if (isBack) {
-                this.transitionName = 'slide-right'
-            } else {
-                this.transitionName = 'slide-left'
+        watch: {
+            $route(to, from) {
+                //如果to索引大于from索引,判断为前进状态,反之
+                if (to.meta.index > from.meta.index) {
+                    this.transitionName = 'slide-left';
+                } else {
+                    this.transitionName = 'slide-right';
+                }
             }
-            this.$router.isBack = false
-            next();
-            this.show=false
         },
         methods:{
             showMenu () {
@@ -71,18 +71,76 @@
 </script>
 
 <style lang="scss">
-    .child-view {
-        /*position: absolute;*/
-        width:100%;
-        overflow-y: scroll;
-    }
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
-    }
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        opacity: 0;
-    }
-  .content{padding: 20px 0;}
+  .box {
+      width: 100%;
+      height: 667px;
+      /*border: 1px solid #222;*/
+      margin: 0 auto;
+      /*border-radius: 16px;*/
+  }
+
+  .contain {
+      width: 100%;
+      height: 600px;
+      /*border: 1px solid #222;*/
+      /*margin: 20px auto 0 auto;*/
+      display: flex;
+      flex-direction: column;
+  }
+
+  .nav {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      flex-direction: row;
+  }
+
+  .nav .nav-link {
+      line-height: 40px;
+      border: 1px solid #222;
+      flex-grow: 1;
+      text-align: center;
+      cursor: pointer;
+  }
+  .nav .nav-link.router-link-exact-active{
+      background-color:#ccc;
+  }
+  .main {
+      flex-grow: 1;
+      overflow: scroll;
+      position: relative;
+  }
+  .login,.home,.user{
+      width:100%;
+      height:100%;
+      position:absolute;
+  }
+
+  /*路由切换动画*/
+  .slide-right-enter-active,
+  .slide-right-leave-active,
+  .slide-left-enter-active,
+  .slide-left-leave-active {
+      will-change: transform;
+      transition: all 500ms;
+      position: absolute;
+  }
+  .slide-right-enter {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+  }
+  .slide-right-leave-active {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+  }
+  .slide-left-enter {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+  }
+  .slide-left-leave-active {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+  }
 
 </style>
 <style lang="stylus" rel="stylesheet/stylus">

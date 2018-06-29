@@ -1,6 +1,5 @@
 <template>
     <div>
-      <div style="height:70px"></div>
       <tabbar class="tabbar" @on-index-change="onIndexChange">
         <tabbar-item link="/home" :selected="$route.name === 'home'">
           <img slot="icon" src="../../assets/img/home.png">
